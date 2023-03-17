@@ -1,17 +1,236 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Scientific Calculator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
+
+    <div class="calculator-grid">
+        <div class="container text-center">
+
+            <div class="output">
+                <div class="previous-operand"></div>
+                <div class="current-operand"></div>
+            </div>
+
+            <div class="trig-fun">
+        
+                <div class="dropdown" style="display: flex;">
+                    <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+                        style="width: 207px; margin-left: 7px; margin-right: 7px; margin-bottom: 6px;">
+                        Trigonometry
+                    </button>
+
+                    <ul class="dropdown-menu">
+                        <div class="flex-container">
+                            <div class="text-center">
+                                <li><button type="button" class="btn" style="width: 50px; height: 40px;">2<sup>nd</sup></button></li>
+                            </div>
+                            <div class="text-center">
+                                <li><button type="button" class="btn" style="width: 50px; height: 40px;">sin</button></li>
+                            </div>
+                            <div class="text-center">
+                                <li><button type="button" class="btn" style="width: 50px; height: 40px;">cos</button></li>
+                            </div>
+                            <div class="text-center">
+                                <li><button type="button" class="btn" style="width: 50px; height: 40px;">tan</button></li>
+                            </div>
+                        </div>
+
+                        <div class="flex-container mt-2">
+                            <div class="text-center">
+                                <li><button type="button" class="btn" style="width: 50px; height: 40px;">hyp</button></li>
+                            </div>
+                            <div class="text-center">
+                                <li><button type="button" class="btn" style="width: 50px; height: 40px;">sec</button></li>
+                            </div>
+                            <div class="text-center">
+                                <li><button type="button" class="btn" style="width: 50px; height: 40px;">csc</button></li>
+                            </div>
+                            <div class="text-center">
+                                <li><button type="button" class="btn" style="width: 50px; height: 40px;">cot</button></li>
+                            </div>
+                        </div>
+                    </ul>
+
+                    <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+                        style="width: 207px; margin-left: 7px; margin-right: 7px; margin-bottom: 6px;">f
+                        Function</button>
+
+                    <ul class="dropdown-menu">
+                        <div class="flex-container">
+                            <div class="text-center">
+                                <li><button type="button" class="btn" style="width: 50px; height: 40px;">|x|</button></li>
+                            </div>
+                            <div class="text-center">
+                                <li><button type="button" class="btn" style="width: 50px; height: 40px;">⌊x⌋</button></li>
+                            </div>
+                            <div class="text-center">
+                                <li><button type="button" class="btn" style="width: 50px; height: 40px;">⌈x⌉</button></li>
+                            </div>
+                        </div>
+
+                        <div class="flex-container mt-2">
+                            <div class="text-center">
+                                <li><button type="button" class="btn" style="width: 50px; height: 40px;">rand</button></li>
+                            </div>
+                            <div class="text-center">
+                                <li><button type="button" class="btn" style="width: 50px; height: 40px;"><i class="fa fa-arrow-right"></i>dms</button></li>
+                            </div>
+                            <div class="text-center">
+                                <li><button type="button" class="btn" style="width: 50px; height: 40px;"><i class="fa fa-arrow-right"></i>deg</button></li>
+                            </div>
+                        </div>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col text-center">
+                    <button type="button" class="btn">2<sup>nd</sup></button>
+                </div>
+                <div class="col text-center">
+                    <button type="button" class="btn">π</button>
+                </div>
+                <div class="col text-center">
+                    <button type="button" class="btn">e</button>
+                </div>
+                <div class="col text-center">
+                    <button type="button" class="btn">C</button>
+                </div>
+                <div class="col text-center">
+                    <button type="button" class="btn"><i class="fa fa-delete-left"></i></button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col text-center">
+                    <button type="button" class="btn">x<sup>2</sup></button>
+                </div>
+                <div class="col text-center">
+                    <button type="button" class="btn">1/x</button>
+                </div>
+                <div class="col text-center">
+                    <button type="button" class="btn">|x|</button>
+                </div>
+                <div class="col text-center">
+                    <button type="button" class="btn">exp</button>
+                </div>
+                <div class="col text-center">
+                    <button type="button" class="btn">mod</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col text-center">
+                    <button type="button" class="btn"><sup>2</sup>√x</button>
+                </div>
+                <div class="col text-center">
+                    <button type="button" class="btn">(</button>
+                </div>
+                <div class="col text-center">
+                    <button type="button" class="btn">)</button>
+                </div>
+                <div class="col text-center">
+                    <button type="button" class="btn">n!</button>
+                </div>
+                <div class="col text-center">
+                    <button type="button" class="btn">÷</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col text-center">
+                    <button type="button" class="btn">x<sup>y</sup></button>
+                </div>
+                <div class="col text-center">
+                    <button type="button" class="btn color-white">7</button>
+                </div>
+                <div class="col text-center">
+                    <button type="button" class="btn color-white">8</button>
+                </div>
+                <div class="col text-center">
+                    <button type="button" class="btn color-white">9</button>
+                </div>
+                <div class="col text-center">
+                    <button type="button" class="btn">×</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col text-center">
+                    <button type="button" class="btn">10<sup>x</sup></button>
+                </div>
+                <div class="col text-center">
+                    <button type="button" class="btn color-white">4</button>
+                </div>
+                <div class="col text-center">
+                    <button type="button" class="btn color-white">5</button>
+                </div>
+                <div class="col text-center">
+                    <button type="button" class="btn color-white">6</button>
+                </div>
+                <div class="col text-center">
+                    <button type="button" class="btn">–</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col text-center">
+                    <button type="button" class="btn">log</button>
+                </div>
+                <div class="col text-center">
+                    <button type="button" class="btn color-white">1</button>
+                </div>
+                <div class="col text-center">
+                    <button type="button" class="btn color-white">2</button>
+                </div>
+                <div class="col text-center">
+                    <button type="button" class="btn color-white">3</button>
+                </div>
+                <div class="col text-center">
+                    <button type="button" class="btn">+</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col text-center">
+                    <button type="button" class="btn">ln</button>
+                </div>
+                <div class="col text-center">
+                    <button type="button" class="btn color-white"><sup>+</sup>/<sub>-</sub></button>
+                </div>
+                <div class="col text-center">
+                    <button type="button" class="btn color-white">0</button>
+                </div>
+                <div class="col text-center">
+                    <button type="button" class="btn color-white">.</button>
+                </div>
+                <div class="col text-center">
+                    <button type="button" class="btn">=</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
     <script src="js/script.js"></script>
+
 </body>
+
 </html>
