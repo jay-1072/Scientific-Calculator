@@ -3,19 +3,19 @@
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     font-weight: normal;
 }
-
+/* 
 body {
     margin: 0;
     padding: 0;
-}
+} */
 
 .container {
     background-color: rgb(240, 240, 240);
-    width: 550px;
-    height: 736px;
+    width: 42vw;
+    min-height: 100vh;
 }
 
-button[type="button"] {
+button.btn {
     background-color: rgb(245, 245, 244);
     width: inherit;
     height: 61px;
@@ -34,21 +34,43 @@ button.color-white {
     background-color: white;
     font-weight: 900;
 }
-
+/* 
 .row {
     justify-content: space-between;
-}
+} */
 
-.flex-container {
+.fun-container, .inverse-trig, .hyperbolic-trig, .trig-container  {
+    width: 15vw;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
-    justify-content: space-evenly;
-    align-content: space-evenly;
-    column-gap: 2px;
+    column-gap: 10px;
 }
 
+.trig-container {
+    width: 20vw;
+}
 
+.dropdown-menu {
+    border: 2px solid black;
+}
 
+button.dropdown-item {
+    width: 50px;
+    height: 40px;
+}
+
+div.trig-fun-drp-dwn {
+    display: flex;
+    /* align-content: flex-start; */
+}
+
+button.trig-btn, button.fun-btn {
+    min-width: 15vw
+}
+
+div.small-col {
+    width:6vw;
+}
