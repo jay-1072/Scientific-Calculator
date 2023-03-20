@@ -94,7 +94,16 @@ function answer() {
     try {
         /* if '=' is called repeatedly then append result to upper screen with operator already used & evaluate expression then display result  */
         if(upper.value.slice(-1)==="=") {
-            upper.value = dis.value + upper.value.slice(-3);
+
+            let indx_of_operator;
+            for(let i=upper.value.length-1; i>=0; i--) {
+                if(op.includes(upper.value[i])) {
+                    indx_of_operator = i;
+                    break;
+                }
+            }
+
+            upper.value = dis.value + upper.value.slice(indx_of_operator);
             dis.value = eval(upper.value.slice(0, -1));
             return;
         }
