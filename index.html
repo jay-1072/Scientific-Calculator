@@ -19,16 +19,16 @@
         <div class="container">
 
             <div class="screen">
-                <textarea rows="2" cols="60" id="subtext" style="max-width: 512px; max-height: 100px; resize: none; background-color: #FAF9F6; text-align: right; border: none;" disabled></textarea>
-                <textarea rows="4" cols="60" id="result" style="max-width: 512px; max-height: 100px; resize: none; background-color: #FAF9F6; text-align: right; border: none; font-size: 30px; color: black;" placeholder="0" disabled></textarea>
+                <textarea rows="2" cols="60" id="subtext" style="min-width: 40.5vw; max-width: 40.5vw; max-height: 100px; resize: none; background-color: rgb(240, 240, 240);; text-align: right; border: none;" disabled></textarea>
+                <textarea rows="4" cols="60" id="result" style="max-width: 40.5vw; max-height: 100px; resize: none; background-color: rgb(240, 240, 240);; text-align: right; border: none; font-size: 30px; color: black;" placeholder="0" disabled></textarea>
                 <hr>
             </div>
 
             <div class="row" style="display: flex; justify-content: flex-start;">
-                <div class="col-1 p-0 ms-2 mb-2 small-col text-center">
+                <div class="col-1 p-0 ms-4 me-2 mb-2 small-col text-center">
                     <button type="button" class="btn">DEG</button>
                 </div>
-                <div class=" col-1 mb-2 small-col text-center">
+                <div class=" col-1 ms-4 mb-2 small-col text-center">
                     <button type="button" class="btn">F-E</button>
                 </div>
                 <input type="checkbox" class="btn-check" id="btn-check" autocomplete="off" onclick="fe()">
@@ -50,14 +50,14 @@
                 <div class="col small-col text-center">
                     <button type="button" class="btn">MS</button>
                 </div>
-                <div class="col small-col text-center">
+                <!-- <div class="col small-col text-center">
                     <button class="btn" type="button" id="m" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom" disabled>M <i class="fa fa-angle-down" aria-hidden="true"></i></button>
 
                     <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
                         <div class="offcanvas-header"></div>
                         <div class="offcanvas-body small" id="memory"></div>
                     </div>
-                </div>
+                </div> -->
             </div>
             
             <hr>
@@ -167,7 +167,7 @@
                     </ul>
 
                     <!-- dropdown for function floor, ceil etc... -->
-                    <button class="btn dropdown-toggle mx-2 my-2 fun-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+                    <button class="btn dropdown-toggle my-2 fun-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="margin-left: 60px;"
                         >&#x192;&nbsp;
                         Function</button>
 
