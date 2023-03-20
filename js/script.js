@@ -4,6 +4,7 @@ let marr = [];
 let op = ['+', '-', '*', '/', '%', '.'];
 // let num = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
 let temp = "";
+/*************************************************************************************************************************************************** */
 
 function display(val) {
 
@@ -56,34 +57,71 @@ function display(val) {
     //     dis.value += val;
     // }
 }
-/* square root started */
 
-function squareRoot() {
-    if (dis.value === '' && upper.value === '' && dis.value!=='Infinity') {
+
+
+
+/* find index of operator started */
+
+function findIndexOfOperator(str) {
+
+    let indx_of_operator;
+
+    if (str.value) {
+        for (let i = str.value.length - 1; i >= 0; i--) {
+            if (op.includes(str.value[i])) {
+                indx_of_operator = i;
+                break;
+            }
+        }
+    }
+    else {
+        for (let i = str.length - 1; i >= 0; i--) {
+            if (op.includes(str[i])) {
+                indx_of_operator = i;
+                break;
+            }
+        }
+    }
+
+
+    return indx_of_operator;
+}
+
+/* find index of operator ended */
+
+/*************************************************************************************************************************************************** */
+
+/* power started */
+
+function calcPow() {
+    if (dis.value === '' && upper.value === '' && dis.value !== 'Infinity') {
         upper.value = `sqrt(0)`;
     }
-    else if (dis.value == '0' && dis.value!=='Infinity') {
+    else if (dis.value == '0' && dis.value !== 'Infinity') {
         upper.value = `sqrt(${upper.value})`;
     }
-    else if (dis.value !== '' && upper.value === '' && dis.value!=='Infinity') {
+    else if (dis.value !== '' && upper.value === '' && dis.value !== 'Infinity') {
         upper.value = `sqrt(${dis.value})`;
     }
-    else if(dis.value!=='Infinity') {
+    else if (dis.value !== 'Infinity') {
         upper.value = `sqrt(${upper.value})`;
     }
 
     dis.value = Math.pow(dis.value, 2);
-    if(dis.value==='Infinity') {
+    if (dis.value === 'Infinity') {
         return;
     }
 }
 
-/* sqaure root ended */
+/* power ended */
+
+/*************************************************************************************************************************************************** */
 
 /* factorial started */
 
 function calcFact(n) {
-    if(n>200) {
+    if (n > 200) {
         return 'Overflow';
     }
     else {
@@ -91,7 +129,7 @@ function calcFact(n) {
             return 1;
         }
         else {
-            return n * calcFact( n - 1 );
+            return n * calcFact(n - 1);
         }
     }
 }
@@ -100,7 +138,7 @@ function factorial() {
 
     let result;
 
-    if(dis.value==='' && upper.value==='') {
+    if (dis.value === '' && upper.value === '') {
         result = calcFact(0);
     }
     else {
@@ -108,45 +146,91 @@ function factorial() {
     }
 
 
-    if (dis.value === '' && upper.value === '' && dis.value!=='Overflow') {
+    if (dis.value === '' && upper.value === '' && dis.value !== 'Overflow') {
         upper.value = `fact(0)`;
     }
-    else if (dis.value == '0' && dis.value!=='Overflow') {
-        upper.value = `fact(${upper.value})`; 
+    else if (dis.value == '0' && dis.value !== 'Overflow') {
+        upper.value = `fact(${upper.value})`;
     }
-    else if (dis.value !== '' && upper.value === '' && dis.value!=='Overflow') {
+    else if (dis.value !== '' && upper.value === '' && dis.value !== 'Overflow') {
         upper.value = `fact(${dis.value})`;
     }
-    else if(dis.value!=='Overflow') {
+    else if (dis.value !== 'Overflow') {
         upper.value = `fact(${upper.value})`;
     }
     dis.value = result;
 
-    if(dis.value==='Overflow') {
+    if (dis.value === 'Overflow') {
         return;
     }
 }
 
 /* factorial ended */
 
+/*************************************************************************************************************************************************** */
+
 /* inverse started */
 
 function inverse() {
-    if((dis.value===''||dis.value==='0') && upper.value==='') {
+    if ((dis.value === '' || dis.value === '0') && upper.value === '') {
         upper.value = '1/(0)';
         dis.value = 'Cannot divide by zero';
     }
-    else if(dis.value!=='' && upper.value==='') {
+    else if (dis.value !== '' && upper.value === '') {
         upper.value = `1/(${dis.value})`;
         dis.value = eval(`1/${dis.value}`);
     }
-    else if(dis.value!=='' && upper.value!=='' && dis.value!='Cannot divide by zero') {
+    else if (upper.value.slice(-1) === '=') {
+        temp = upper.value;
+        upper.value = `1/(${dis.value})`;
+        dis.value = eval(`1/${dis.value}`);
+    }
+    else if (upper.value.slice(-1) === '+' || upper.value.slice(-1) === '-' || upper.value.slice(-1) === '*' || upper.value.slice(-1) === '/') {
+        upper.value += `1/(${dis.value})`;
+        dis.value = eval(`1/${dis.value}`);
+    }
+    else if (dis.value !== '' && upper.value !== '' && dis.value != 'Cannot divide by zero') {
         upper.value = `1/(${upper.value})`;
         dis.value = eval(`1/${dis.value}`);
     }
 }
 
 /* inverse ended */
+
+/*************************************************************************************************************************************************** */
+
+/* absolute started */
+
+function absolute() {
+
+    if ((dis.value === '' || dis.value === '0') && upper.value === '') {
+        upper.value = 'abs(0)';
+        dis.value = Math.abs(0);
+    }
+    else if (dis.value !== '' && upper.value === '') {
+        upper.value = `abs(${dis.value})`;
+        dis.value = Math.abs(dis.value);
+    }
+    else if (upper.value.slice(-1) === '=') {
+        temp = upper.value;
+        upper.value = `abs(${dis.value})`;
+        dis.value = Math.abs(dis.value);
+    }
+    else if (upper.value.slice(-1) === '+' || upper.value.slice(-1) === '-' || upper.value.slice(-1) === '*' || upper.value.slice(-1) === '/') {
+        upper.value += `abs(${dis.value})`;
+        dis.value = eval(`abs(${dis.value})`);
+    }
+    else if (dis.value !== '' && upper.value !== '') {
+        upper.value = `abs(${upper.value})`;
+        dis.value = Math.abs(dis.value);
+    }
+
+}
+
+/* absolute ended  */
+
+
+/*************************************************************************************************************************************************** */
 
 /* delete button started */
 
@@ -160,6 +244,8 @@ function dlt() {
 }
 
 /* delete button ended */
+
+/*************************************************************************************************************************************************** */
 
 /* pop button started */
 
@@ -183,12 +269,16 @@ function pop() {
 
 /* pop button ended */
 
+/*************************************************************************************************************************************************** */
+
 /* answer button started */
 
 function answer() {
     try {
         /* if '=' is called repeatedly then append result to upper screen with operator already used & evaluate expression then display result  */
         if (upper.value.slice(-1) === "=") {
+
+            // console.log(upper.value);
 
             // check for sqrt
             if (upper.value.slice(0, 4) == 'sqrt') {
@@ -199,22 +289,29 @@ function answer() {
                 upper.value = dis.value + '=';
                 return;
             }
-            else if(upper.value.slice(1,2)==='/' && upper.value.slice(2,3)==='(') {
+            else if (upper.value.slice(0, 3) === 'abs') {
+                if (temp.slice(-1) === '=') {
+                    let indx_of_operator = findIndexOfOperator(temp);
+                    upper.value = dis.value + temp.slice(indx_of_operator);
+
+                    dis.value = eval(`${dis.value}${temp.slice(indx_of_operator, -1)}`);
+                }
+                else {
+                    upper.value = dis.value + "=";
+                }
+
+                return;
+
+            }
+            else if (upper.value.slice(1, 2) === '/' && upper.value.slice(2, 3) === '(') {
                 upper.value = dis.value + '=';
                 return;
             }
-            else if(upper.value===(dis.value+'=')) {
+            else if (upper.value === (dis.value + '=')) {
                 return;
             }
             else {
-                let indx_of_operator;
-                for (let i = upper.value.length - 1; i >= 0; i--) {
-                    if (op.includes(upper.value[i])) {
-                        indx_of_operator = i;
-                        break;
-                    }
-                }
-
+                let indx_of_operator = findIndexOfOperator(upper);
                 upper.value = dis.value + upper.value.slice(indx_of_operator);
                 dis.value = eval(upper.value.slice(0, -1));
                 return;
@@ -222,21 +319,36 @@ function answer() {
         }
         else {
             /* if first time '=' is pressed then simply append '=' to upper value and evaluate expression in result screen */
-            if (upper.value.slice(0, 4) == 'sqrt' && dis.value!=='Infinity') {
+            if (upper.value.slice(0, 4) == 'sqrt' && dis.value !== 'Infinity') {
                 upper.value += '=';
                 return;
             }
-            else if (upper.value.slice(0, 4) == 'fact' && dis.value!=='Overflow') {
+            else if (upper.value.slice(0, 4) == 'fact' && dis.value !== 'Overflow') {
                 upper.value += '=';
                 return;
             }
-            else if(dis.value==='Infinity' || dis.value==='Overflow' || dis.value==='Cannot divide by zero') {
+            else if (dis.value === 'Infinity' || dis.value === 'Overflow' || dis.value === 'Cannot divide by zero') {
                 upper.value = '';
                 dis.value = '';
                 return;
             }
-            else if(upper.value.slice(1,2)==='/' && upper.value.slice(2,3)==='(') {
+            else if (upper.value.slice(1, 2) === '/' && upper.value.slice(2, 3) === '(') {   // operation done before inverse
+
                 upper.value += '=';
+                return;
+            }
+            else if (upper.value.slice(0, 3) === 'abs') {
+
+                console.log(temp);
+
+                if (temp.slice(-1) !== '=') { 
+                    upper.value += '=';
+                }
+                else if (temp.slice(-1) === '=') { // operation done before abs
+                    let indx_of_operator = findIndexOfOperator(temp);
+                    upper.value += temp.slice(indx_of_operator);
+                }
+
                 return;
             }
             else {
