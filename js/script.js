@@ -129,6 +129,25 @@ function factorial() {
 
 /* factorial ended */
 
+/* inverse started */
+
+function inverse() {
+    if((dis.value===''||dis.value==='0') && upper.value==='') {
+        upper.value = '1/(0)';
+        dis.value = 'Cannot divide by zero';
+    }
+    else if(dis.value!=='' && upper.value==='') {
+        upper.value = `1/(${dis.value})`;
+        dis.value = eval(`1/${dis.value}`);
+    }
+    else if(dis.value!=='' && upper.value!=='' && dis.value!='Cannot divide by zero') {
+        upper.value = `1/(${upper.value})`;
+        dis.value = eval(`1/${dis.value}`);
+    }
+}
+
+/* inverse ended */
+
 /* delete button started */
 
 function dlt() {
@@ -180,6 +199,10 @@ function answer() {
                 upper.value = dis.value + '=';
                 return;
             }
+            else if(upper.value.slice(1,2)==='/' && upper.value.slice(2,3)==='(') {
+                upper.value = dis.value + '=';
+                return;
+            }
             else if(upper.value===(dis.value+'=')) {
                 return;
             }
@@ -207,9 +230,13 @@ function answer() {
                 upper.value += '=';
                 return;
             }
-            else if(dis.value==='Infinity' || dis.value==='Overflow') {
+            else if(dis.value==='Infinity' || dis.value==='Overflow' || dis.value==='Cannot divide by zero') {
                 upper.value = '';
                 dis.value = '';
+                return;
+            }
+            else if(upper.value.slice(1,2)==='/' && upper.value.slice(2,3)==='(') {
+                upper.value += '=';
                 return;
             }
             else {
