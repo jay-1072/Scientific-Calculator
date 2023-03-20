@@ -26,38 +26,39 @@
 
             <div class="row" style="display: flex; justify-content: flex-start;">
                 <div class="col-1 p-0 ms-4 me-2 mb-2 small-col text-center">
-                    <button type="button" class="btn">DEG</button>
+                    <button type="button" class="btn" id="btntxt" onclick="textChange()">DEG</button>
                 </div>
                 <div class=" col-1 ms-4 mb-2 small-col text-center">
                     <button type="button" class="btn">F-E</button>
+                    <input type="checkbox" class="btn-check" id="btn-check" autocomplete="off" onclick="fe()">
                 </div>
-                <input type="checkbox" class="btn-check" id="btn-check" autocomplete="off" onclick="fe()">
+                
             </div>
 
             <div class="row">
                 <div class="col small-col text-center">
-                    <button type="button" class="btn">MC</button>
+                    <button type="button" class="btn" id="mc" onclick="mc()" disabled>MC</button>
                 </div>
                 <div class="col small-col text-center">
-                    <button type="button" class="btn">MR</button>
+                    <button type="button" class="btn" id="mr" onclick="mr()" disabled>MR</button>
                 </div>
                 <div class="col small-col text-center">
-                    <button type="button" class="btn">M+</button>
+                    <button type="button" class="btn" onclick="mplus()">M+</button>
                 </div>
                 <div class="col small-col text-center">
-                    <button type="button" class="btn">M-</button>
+                    <button type="button" class="btn" onclick="mminus()">M-</button>
                 </div>
                 <div class="col small-col text-center">
-                    <button type="button" class="btn">MS</button>
+                    <button type="button" class="btn" onclick="ms()">MS</button>
                 </div>
-                <!-- <div class="col small-col text-center">
-                    <button class="btn" type="button" id="m" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom" disabled>M <i class="fa fa-angle-down" aria-hidden="true"></i></button>
+                <div class="col small-col text-center">
+                    <button class="btn" type="button" id="m" onclick="m()" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom" disabled>M <i class="fa fa-angle-down" aria-hidden="true"></i></button>
 
                     <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
                         <div class="offcanvas-header"></div>
                         <div class="offcanvas-body small" id="memory"></div>
                     </div>
-                </div> -->
+                </div>
             </div>
             
             <hr>
@@ -76,32 +77,32 @@
                             <div class="text-center">
                                 <!-- sub dropdown for inverse trigonometry -->
                                 <li class="dropend">
-                                    <button type="button" class="btn dropdown-item dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">2<sup>nd</sup>
+                                    <button type="button" id="second1" class="btn dropdown-item dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">2<sup>nd</sup>
                                     </button>
 
                                     <ul class="dropdown-menu">
                                         <!-- first sub container for sin-1 cos-1 tan-1 -->
                                         <div class="flex-container inverse-trig">
                                             <div class="text-center">
-                                                <li><button type="button" class="btn dropdown-item">sin<sup>-1</sup></button></li>
+                                                <li><button type="button" class="btn dropdown-item" onclick="sini()">sin<sup>-1</sup></button></li>
                                             </div>
                                             <div class="text-center">
-                                                <li><button type="button" class="btn dropdown-item">cos<sup>-1</sup></button></li>
+                                                <li><button type="button" class="btn dropdown-item" onclick="cosi()">cos<sup>-1</sup></button></li>
                                             </div>
                                             <div class="text-center">
-                                                <li><button type="button" class="btn dropdown-item">tan<sup>-1</sup></button></li>
+                                                <li><button type="button" class="btn dropdown-item" onclick="tani()">tan<sup>-1</sup></button></li>
                                             </div>    
                                         </div>
                                         <!-- second sub container for sec-1 csc-1 cot-1 -->
                                         <div class="flex-container inverse-trig mt-2">
                                             <div class="text-center">
-                                                <li><button type="button" class="btn dropdown-item">sec<sup>-1</sup></button></li>
+                                                <li><button type="button" class="btn dropdown-item" onclick="seci()">sec<sup>-1</sup></button></li>
                                             </div>
                                             <div class="text-center">
-                                                <li><button type="button" class="btn dropdown-item">csc<sup>-1</sup></button></li>
+                                                <li><button type="button" class="btn dropdown-item" onclick="coseci()">csc<sup>-1</sup></button></li>
                                             </div>
                                             <div class="text-center">
-                                                <li><button type="button" class="btn dropdown-item">cot<sup>-1</sup></button></li>
+                                                <li><button type="button" class="btn dropdown-item" onclick="coti()">cot<sup>-1</sup></button></li>
                                             </div>    
                                         </div>
                                     </ul>
@@ -110,13 +111,13 @@
                             <!-- sub dropdown ends here -->
 
                             <div class="text-center">
-                                <li><button type="button" class="btn dropdown-item">sin</button></li>
+                                <li><button type="button" class="btn dropdown-item" onclick="sin()">sin</button></li>
                             </div>
                             <div class="text-center">
-                                <li><button type="button" class="btn dropdown-item">cos</button></li>
+                                <li><button type="button" class="btn dropdown-item" onclick="cos()">cos</button></li>
                             </div>
                             <div class="text-center">
-                                <li><button type="button" class="btn dropdown-item">tan</button></li>
+                                <li><button type="button" class="btn dropdown-item" onclick="tan()">tan</button></li>
                             </div>
                         </div>
 
@@ -125,43 +126,43 @@
                             <div class="text-center">
                                 <!-- sub dropdown for hyperbolic trigonometry -->
                                 <li class="dropend">
-                                    <button type="button" class="btn dropdown-item dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">hyp</button>
+                                    <button type="button" id="second" class="btn dropdown-item dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">hyp</button>
                                     <ul class="dropdown-menu">
                                         <!-- first sub container for sinh cosh tanh -->
                                         <div class="flex-container hyperbolic-trig">
                                             <div class="text-center">
-                                                <li><button type="button" class="btn dropdown-item">sinh</button></li>
+                                                <li><button type="button" class="btn dropdown-item" onclick="sinh()">sinh</button></li>
                                             </div>
                                             <div class="text-center">
-                                                <li><button type="button" class="btn dropdown-item">cosh</button></li>
+                                                <li><button type="button" class="btn dropdown-item" onclick="cosh()">cosh</button></li>
                                             </div>
                                             <div class="text-center">
-                                                <li><button type="button" class="btn dropdown-item">tanh</button></li>
+                                                <li><button type="button" class="btn dropdown-item" onclick="tanh()">tanh</button></li>
                                             </div>    
                                         </div>
                                         <!-- first sub container for sech csch coth -->
                                         <div class="flex-container hyperbolic-trig mt-2">
                                             <div class="text-center">
-                                                <li><button type="button" class="btn dropdown-item">sech</button></li>
+                                                <li><button type="button" class="btn dropdown-item" onclick="sech()">sech</button></li>
                                             </div>
                                             <div class="text-center">
-                                                <li><button type="button" class="btn dropdown-item">csch</button></li>
+                                                <li><button type="button" class="btn dropdown-item"  onclick="cosech()">csch</button></li>
                                             </div>
                                             <div class="text-center">
-                                                <li><button type="button" class="btn dropdown-item">coth</button></li>
+                                                <li><button type="button" class="btn dropdown-item" onclick="coth()">coth</button></li>
                                             </div>    
                                         </div>
                                     </ul>
                                 </li>
                             </div>
                             <div class="text-center">
-                                <li><button type="button" class="btn dropdown-item">sec</button></li>
+                                <li><button type="button" class="btn dropdown-item" onclick="sec()">sec</button></li>
                             </div>
                             <div class="text-center">
-                                <li><button type="button" class="btn dropdown-item">csc</button></li>
+                                <li><button type="button" class="btn dropdown-item" onclick="cosec()">csc</button></li>
                             </div>
                             <div class="text-center">
-                                <li><button type="button" class="btn dropdown-item">cot</button></li>
+                                <li><button type="button" class="btn dropdown-item" onclick="cot()">cot</button></li>
                             </div>
                         </div>
                     </ul>
@@ -175,26 +176,26 @@
                         <!-- first container for |x|,⌊x⌋,⌈x⌉  -->
                         <div class="flex-container fun-container">
                             <div class="text-center">
-                                <li><button type="button" class="btn dropdown-item">|x|</button></li>
+                                <li><button type="button" class="btn dropdown-item" onclick="absolute()">|x|</button></li>
                             </div>
                             <div class="text-center">
-                                <li><button type="button" class="btn dropdown-item">⌊x⌋</button></li>
+                                <li><button type="button" class="btn dropdown-item" onclick="floor()">⌊x⌋</button></li>
                             </div>
                             <div class="text-center">
-                                <li><button type="button" class="btn dropdown-item">⌈x⌉</button></li>
+                                <li><button type="button" class="btn dropdown-item" onclick="ceil()">⌈x⌉</button></li>
                             </div>
                         </div>
 
                         <!-- second container for rand, dms and deg -->
                         <div class="flex-container fun-container mt-2">
                             <div class="text-center">
-                                <li><button type="button" class="btn dropdown-item">rand</button></li>
+                                <li><button type="button" class="btn dropdown-item" onclick="rand()">rand</button></li>
                             </div>
                             <div class="text-center">
-                                <li><button type="button" class="btn dropdown-item">&#x2192;dms</button></li>
+                                <li><button type="button" class="btn dropdown-item" onclick="dms()">&#x2192;dms</button></li>
                             </div>
                             <div class="text-center">
-                                <li><button type="button" class="btn dropdown-item">&#x2192;deg</button></li>
+                                <li><button type="button" class="btn dropdown-item" onclick="deg()">&#x2192;deg</button></li>
                             </div>
                         </div>
                     </ul>
@@ -203,13 +204,13 @@
 
             <div class="row">
                 <div class="col text-center">
-                    <button type="button" class="btn">2<sup>nd</sup></button>
+                    <button type="button" class="btn" onclick="changeBtn()">2<sup>nd</sup></button>
                 </div>
                 <div class="col text-center">
-                    <button type="button" class="btn">π</button>
+                    <button type="button" class="btn" onclick="display(Math.PI)">π</button>
                 </div>
                 <div class="col text-center">
-                    <button type="button" class="btn">e</button>
+                    <button type="button" class="btn" onclick="display(Math.E)">e</button>
                 </div>
                 <div class="col text-center">
                     <button type="button" class="btn" onclick="dlt()">C</button>
@@ -221,7 +222,7 @@
 
             <div class="row">
                 <div class="col text-center">
-                    <button type="button" class="btn" onclick="calcPow()">x<sup>2</sup></button>
+                    <button type="button" class="btn" id="sqr" onclick="sqr()">x<sup>2</sup></button>
                 </div>
                 <div class="col text-center">
                     <button type="button" class="btn" onclick="inverse()">1/x</button>
@@ -230,7 +231,7 @@
                     <button type="button" class="btn" onclick="absolute()">|x|</button>
                 </div>
                 <div class="col text-center">
-                    <button type="button" class="btn">exp</button>
+                    <button type="button" class="btn" onclick="expo()">exp</button>
                 </div>
                 <div class="col text-center">
                     <button type="button" class="btn" onclick="display('%')">mod</button>
@@ -239,13 +240,13 @@
 
             <div class="row">
                 <div class="col text-center">
-                    <button type="button" class="btn" onclick=""><sup>2</sup>&#x221A;x</button>
+                    <button type="button" class="btn" id="root" onclick="sqroot()">2&#x221A;x</button>
                 </div>
                 <div class="col text-center">
-                    <button type="button" class="btn">(</button>
+                    <button type="button" class="btn" onclick="display('(')">(</button>
                 </div>
                 <div class="col text-center">
-                    <button type="button" class="btn">)</button>
+                    <button type="button" class="btn" onclick="display(')')">)</button>
                 </div>
                 <div class="col text-center">
                     <button type="button" class="btn" onclick="factorial()">n!</button>
@@ -257,7 +258,7 @@
 
             <div class="row">
                 <div class="col text-center">
-                    <button type="button" class="btn">x<sup>y</sup></button>
+                    <button type="button" class="btn" id="expo" onclick="xtoy()">x<sup>y</sup></button>
                 </div>
                 <div class="col text-center">
                     <button type="button" class="btn color-white" onclick="display('7')">7</button>
@@ -275,7 +276,7 @@
 
             <div class="row">
                 <div class="col text-center">
-                    <button type="button" class="btn">10<sup>x</sup></button>
+                    <button type="button" class="btn" id="tenpow" onclick="tentox()">10<sup>x</sup></button>
                 </div>
                 <div class="col text-center">
                     <button type="button" class="btn color-white" onclick="display('4')">4</button>
@@ -293,7 +294,7 @@
 
             <div class="row">
                 <div class="col text-center">
-                    <button type="button" class="btn">log</button>
+                    <button type="button" class="btn" id="log" onclick="log()">log</button>
                 </div>
                 <div class="col text-center">
                     <button type="button" class="btn color-white" onclick="display('1')">1</button>
@@ -311,10 +312,10 @@
 
             <div class="row">
                 <div class="col text-center">
-                    <button type="button" class="btn">ln</button>
+                    <button type="button" class="btn" id="ln" onclick="ln()">ln</button>
                 </div>
                 <div class="col text-center">
-                    <button type="button" class="btn color-white"><sup>+</sup>/<sub>-</sub></button>
+                    <button type="button" class="btn color-white" onclick="plusminus()"><sup>+</sup>/<sub>-</sub></button>
                 </div>
                 <div class="col text-center">
                     <button type="button" class="btn color-white" onclick="display('0')">0</button>
