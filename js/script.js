@@ -399,6 +399,19 @@ function display(val) {
 
 
 
+    // if operator comes and dis value is empty & upper has '='
+    if (op.includes(val) && temp === '') {
+        if (upper.value.slice(-1) === '=') {
+            upper.value = dis.value + val;
+        }
+        else if(op.includes(upper.value.slice(-1))) {
+            upper.value = upper.value.slice(0, -1) + val;
+        }
+        else {
+            upper.value += val;
+        }
+        return;
+    }
 // ************************************ FIRST ROW ************************************************
 function textChange() {
     let btntxt = document.getElementById("btntxt").innerHTML;
@@ -468,79 +481,52 @@ function m() {
         html+="<td>"+marr[i]+"</td>";
         html+="</tr>";
     }
-    html+="</table>";
-    document.getElementById('memory').innerHTML = html;
-}
-// ************************************************************************************
-
-
-
-// *********************************** TRIGONOMETRY ***********************************************
-document.getElementById("second").addEventListener("click", function(e) {
-    e.stopPropagation();
-});
-document.getElementById("second1").addEventListener("click", function(e) {
-    e.stopPropagation();
-});
-
-// INSIDE TRIGONOMETRY
-function sin() {
-    let mode = document.getElementById("btntxt").innerHTML;
-    upper.value = 'sin('+ dis.value + ')';
-    if(mode == 'RAD') {
-        dis.value = Math.sin(dis.value);
-    } else {
-        dis.value = Math.sin(dis.value*(Math.PI/180));
+    else if (dis.value == '0' && dis.value !== 'Infinity') {
+        upper.value = `sqrt(${upper.value})`;
+    }
+    else if (dis.value !== '' && upper.value === '' && dis.value !== 'Infinity') {
+        upper.value = `sqrt(${dis.value})`;
     }
 }
 
-function cos() {
-    let mode = document.getElementById("btntxt").innerHTML;
-    upper.value = 'cos('+ dis.value + ')';
-    if(mode == 'RAD') {
-        dis.value = Math.cos(dis.value);
-    } else {
-        dis.value = Math.cos(dis.value*(Math.PI/180));
+    dis.value = Math.pow(dis.value, 2);
+    if (dis.value === 'Infinity') {
+        return;
     }
 }
 
-function tan() {
-    let mode = document.getElementById("btntxt").innerHTML;
-    upper.value = 'tan('+ dis.value + ')';
-    if(mode == 'RAD') {
-        dis.value = Math.tan(dis.value);
-    } else {
-        dis.value = Math.tan(dis.value*(Math.PI/180));
+/* power ended */
+
+/*************************************************************************************************************************************************** */
+
+/* factorial started */
+
+function calcFact(n) {
+    if (n > 200) {
+        return 'Overflow';
+    }
+    else {
+        if (n === 0) {
+            return 1;
+        }
+        else {
+            return n * calcFact(n - 1);
+        }
     }
 }
 
-function sec() {
-    let mode = document.getElementById("btntxt").innerHTML;
-    upper.value = 'sec('+ dis.value + ')';
-    if(mode == 'RAD') {
-        dis.value = 1 / Math.cos(dis.value);
-    } else {
-        dis.value = 1 / Math.cos(dis.value*(Math.PI/180));   
+function factorial() {
+
+    let result;
+
+    if (dis.value === '' && upper.value === '') {
+        result = calcFact(0);
     }
 }
 
-function cosec() {
-    let mode = document.getElementById("btntxt").innerHTML;
-    upper.value = 'cosec('+ dis.value + ')';
-    if(mode == 'RAD') {
-        dis.value = 1 / Math.sin(dis.value);
-    } else {
-        dis.value = 1 / Math.sin(dis.value*(Math.PI/180));   
-    }
-}
 
-function cot() {
-    let mode = document.getElementById("btntxt").innerHTML;
-    upper.value = 'cot('+ dis.value + ')';
-    if(mode == 'RAD') {
-        dis.value = 1 / Math.tan(dis.value);
-    } else {
-        dis.value = 1 / Math.tan(dis.value*(Math.PI/180));   
+    if (dis.value === '' && upper.value === '' && dis.value !== 'Overflow') {
+        upper.value = `fact(0)`;
     }
 }
 
@@ -562,23 +548,12 @@ function cosi() {
         dis.value = "Enter value between -1 and 1";
 }
 
-function tani() {
-    upper.value = 'tan-1('+ dis.value + ')';
-    if(dis.value>=-1 && dis.value<=1)
-        dis.value = Math.atan(dis.value);
-    else
-        dis.value = "Enter value between -1 and 1";
+    if (dis.value === 'Overflow') {
+        return;
+    }
 }
 
-function seci() {
-    upper.value = 'sec-1('+ dis.value + ')';
-    dis.value = Math.acos(1 / dis.value);
-}
-
-function coseci() {
-    upper.value = 'cosec-1('+ dis.value + ')';
-    dis.value = Math.asin(1 / dis.value);
-}
+/* factorial ended */
 
 function coti() {
     upper.value = 'cot-1('+ dis.value + ')';
@@ -590,6 +565,7 @@ function coti() {
 function sinh() {
     upper.value = 'sinh('+ dis.value + ')';
     dis.value = Math.sinh(dis.value);
+        temp = "";
 }
 
 function cosh() {
@@ -624,6 +600,7 @@ function coth() {
 function absolute() {
     upper.value = 'abs('+ dis.value + ')';
     dis.value = Math.abs(dis.value);
+        temp = "";
 }
 
 function ceil() {
@@ -650,6 +627,39 @@ function dms() {
 
 function deg() {}
 // **********************************************************************************************
+
+
+/*************************************************************************************************************************************************** */
+
+/* square root started */
+
+function squareRoot() {
+
+    if ((dis.value === '' || dis.value === '0') && upper.value === '') {
+        upper.value = '√(0)';
+        dis.value = Math.sqrt(0);
+    }
+    else if (dis.value !== '' && upper.value === '') {
+        upper.value = `√(${dis.value})`;
+        dis.value = Math.sqrt(dis.value);
+        temp = "";
+    }
+    else if (upper.value.slice(-1) === '=') {
+        temp = upper.value;
+        upper.value = `√(${dis.value})`;
+        dis.value = Math.sqrt(dis.value);
+    }
+    else if (upper.value.slice(-1) === '+' || upper.value.slice(-1) === '-' || upper.value.slice(-1) === '*' || upper.value.slice(-1) === '/') {
+        upper.value += `√(${dis.value})`;
+        dis.value = Math.sqrt(dis.value);
+    }
+    else if (dis.value !== '' && upper.value !== '') {
+        upper.value = `√(${upper.value})`;
+        dis.value = Math.sqrt(dis.value);
+    }
+}
+
+/* square root ended */
 
 
 
@@ -745,6 +755,20 @@ function factorial() {
     } else {
         for (let i = 1; i <= dis.value; i++) {
             fact *= i;
+            }
+            else if (upper.value.slice(0, 1) === '√') {
+                if (temp.slice(-1) === '=') {
+                    let indx_of_operator = findIndexOfOperator(temp);
+                    upper.value = dis.value + temp.slice(indx_of_operator);
+
+                    dis.value = eval(`${dis.value}${temp.slice(indx_of_operator, -1)}`);
+                }
+                else {
+                    upper.value = dis.value + "=";
+                }
+
+                return;
+
         }
     }
     dis.value = fact;
@@ -788,6 +812,17 @@ function log() {
 // **********************************************************************************************
 
 
+                if (temp.slice(-1) !== '=') { 
+                    upper.value += '=';
+                }
+                else if (temp.slice(-1) === '=') { // operation done before abs
+                    let indx_of_operator = findIndexOfOperator(temp);
+                    upper.value += temp.slice(indx_of_operator);
+                }
+
+                return;
+            }
+            else if (upper.value.slice(0, 1) === '√') {
 
 // ****************************************** ROW: 7 ********************************************
 function ln() {
