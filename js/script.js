@@ -451,5 +451,4 @@ function answer() {
         temp = "";
     }
 }
-
-/* answer button ended */
+}
